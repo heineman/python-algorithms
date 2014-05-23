@@ -28,3 +28,9 @@ To sort the external file, say:
 
   >>> mergeSortFile('sample-file.txt')
 
+
+
+Change Log
+
+1. 2014.05.23	Fixed createRandom to open in 'b' (binary) mode when creating file
+                with large number of integers
