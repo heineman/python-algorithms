@@ -1,4 +1,5 @@
 # Binary Search Tree Implementation
+
 import random
 from time import time
 
@@ -91,7 +92,7 @@ class BinaryTree:
     
         if value == parent.value:
             return parent.delete()
-        elif value < parent.val:
+        elif value < parent.value:
             parent.left = self.removeFromParent(parent.left, value)
         else:
             parent.right = self.removeFromParent(parent.right, value)
@@ -113,8 +114,14 @@ def performance():
 
         n *= 2
 
-    
-
+"""
+Change Log
+----------
+2014.05.23     removeFromParent
+               defect:    elif value < parent.val:
+               fix:       elif value < parent.value
+               
+"""
 
 
 

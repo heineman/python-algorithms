@@ -1,4 +1,4 @@
-# Demonstrates inefficient insertInPlace code
+# Binary Search template file
 from time import time
 
 def contains(collection, target):
@@ -13,6 +13,7 @@ def insertInPlace(ordered, target):
             return
 
     ordered.append(target)
+    
 
 def performance():
     """Demonstrate execution performance of contains"""
