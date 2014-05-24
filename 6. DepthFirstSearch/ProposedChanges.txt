@@ -1,0 +1,2 @@
+1. Add isVertex() method of graph to determine proper membership of vertices
+2. Fix DepthFirstTraversal to first check that vertex exists in graph before DFS begins
