@@ -69,17 +69,21 @@ def solve(n, step=0):
 # revise as shown:
 
 def validUpTo(n,step):
-    """Determine if valid so far"""
-    for r in range(n):
-        if step == (r+1)*n-1:
-            return sum(board[r]) == magicSum[0]
+    """Determine if valid so far. Rewritten to take advantage of fact that
+    you don't need to check each row/col up to step, but only the row or
+    column at step. Improves performance by about 50%"""
+    if step % n == n-1:
+        r = (step + 1 - n)/n
+        if sum(board[r]) != magicSum[0]:
+            return False
 
-    for c in range(n):
-        if step == n*(n-1)+c:
-            total = 0
-            for r in range(n):
-                total += board[r][c]
-            return total == magicSum[0]
+    if step >= n*n-n:
+        c = step % n
+        total = 0
+        for r in range(n):
+            total += board[r][c]
+        if total != magicSum[0]:
+            return False
 
     return True
 
@@ -102,5 +106,33 @@ def solveit(n, step=0):
 
     return False
                  
-# Note that this won't work for 5x5 since that is even more computationally
-# expensive!
+# Note that these solutions won't work for 5x5. If you let the following
+# code run for several hours, it will report there are 7040 squares.
+
+def up2():
+    from time import time
+    now = time()
+    num = [0]
+    count(4, 0, num)
+    print num, " solutions"
+    print time() - now
+
+def count(n, step=0, number=[0]):
+    """Count number of solutions and return as first element in number."""
+        
+    if step == n**2:
+        if isValid(n):
+            number[0] += 1
+        return
+
+    for val in range(1,n**2+1):
+        if not used[val]:
+            
+            used[val] = True
+            board[step/n][step%n] = val
+            if validUpTo(n,step):
+                count(n, step+1, number)
+
+            board[step/n][step%n] = 0
+            used[val] = False
+
