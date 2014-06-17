@@ -73,11 +73,6 @@ class DepthFirstTraversal:
 
         self.dfs_visit(s)
 
-        for v in graph.edges:
-            if self.color[v] is White:
-                self.dfs_visit(v)
-
-
     def dfs_visit(self, u):
         """Recursive traversal of graph using DFS"""
 
