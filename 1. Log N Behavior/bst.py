@@ -51,6 +51,17 @@ class BinaryNode:
 
         return self
 
+    def inorder(self):
+        """In order traversal of tree rooted at given node."""
+        if self.left:
+            for n in self.left.inorder():
+                yield n
+
+        yield self.value
+
+        if self.right:
+            for n in self.right.inorder():
+                yield n
 
 class BinaryTree:
 
@@ -99,6 +110,11 @@ class BinaryTree:
 
         return parent
 
+    def __iter__(self):
+        """In order traversal of elements in the tree"""
+        if self.root:
+            return self.root.inorder()
+
 def performance():
     """Demonstrate execution performance"""
     n = 1024
@@ -120,7 +136,8 @@ Change Log
 2014.05.23     removeFromParent
                defect:    elif value < parent.val:
                fix:       elif value < parent.value
-               
+
+2014.06.16     added inorder iterator capability to allow 'for x in bt'
 """
 
 
