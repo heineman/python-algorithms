@@ -24,3 +24,5 @@ algorithms developed for that module.
 
 The "* Big O SideBar" module introduces terminology used to analyze the algorithms whose code is contained
 in these modules.
+
+All presentation slides used during the recording of the videos are found in the "Presentation Slides" folder as PDF documents.
